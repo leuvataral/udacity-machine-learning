@@ -1,0 +1,2 @@
+to run recognize.py open cmd and navigate to current directory 
+run the following command: python recognize.py 1.bmp

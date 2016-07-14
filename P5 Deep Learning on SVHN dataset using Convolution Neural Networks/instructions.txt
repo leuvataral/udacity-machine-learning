@@ -1,0 +1,52 @@
+# The script will only run on GPU if your system has a compatible GPU installed
+# Script will run on CPU but it will take very long
+# Script can be run using GPU on Amazon EC2 or Rescale http://www.rescale.com/
+# If you do not want to run the training script you can skip it and just run the testing scripts
+# There are two testing scripts: 
+	keras_svhn_testing.py will test the model on whole test dataset
+	/samples/recognize.py will test the model on individual images (Need to specify the image name as argument)
+		For example: python recognize.py 1.bmp
+
+
+Python version: 2.7 64-bit
+
+Libraries needed:	
+	--Numpy
+	--Keras
+	--Theano
+	--PyCuda(For running on GPU)
+	--Scipy
+	--H5PY
+	
+Extra programs(For running on GPU):
+	--CUDA Toolkit 7.5
+	--Microsoft Visual Studio 2013
+	
+Dataset used:
+	--SVHN http://ufldl.stanford.edu/housenumbers/
+	--Training data:  train_32x32.mat
+	--Testing data:  test_32x32.mat
+	
+Installation:
+	--Install Anaconda for Python 2.7 64-bit
+	--Install Microsoft Visual Studio 2013
+	--Add "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\amd64" to path
+	--Install NVIDIA CUDA Toolkit 7.5
+	--Install keras using "pip install keras"
+	--Install theano using "pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git"
+	--Install PyCuda using "pip install pycuda"
+	--Install H5PY using "pip install h5py"
+	--Run "conda install mingw libpython"
+	--Create a file named ".theanorc" in C:\Users\XXXX\
+	--Open ".theanorc" using notepad and add the following in it
+	  #start
+			[global]
+			floatX = float32
+			device = gpu
+
+			[nvcc]
+			flags=-LC:\Users\XXXX\Anaconda2\libs\
+			compiler_bindir=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\amd64
+	  #end
+	
+	
